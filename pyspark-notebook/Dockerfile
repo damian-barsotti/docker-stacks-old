@@ -62,6 +62,11 @@ RUN if [ -z "${scala_version}" ]; then \
 COPY ipython_kernel_config.py "/etc/ipython/"
 RUN fix-permissions "/etc/ipython/"
 
+# Copy files to connect with Spark server
+COPY ./hive-site.xml ${SPARK_HOME}/conf/
+COPY ./spark-defaults.conf ${SPARK_HOME}/conf/
+COPY ./mysql-connector-j-8.0.31.jar ${SPARK_HOME}/jars
+
 USER ${NB_UID}
 
 # Install pyarrow
