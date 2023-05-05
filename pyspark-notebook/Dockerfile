@@ -67,6 +67,9 @@ COPY ./hive-site.xml ${SPARK_HOME}/conf/
 COPY ./spark-defaults.conf ${SPARK_HOME}/conf/
 COPY ./mysql-connector-j-8.0.31.jar ${SPARK_HOME}/jars
 
+# Shared folder
+RUN mkdir /shared-folder
+
 USER ${NB_UID}
 
 # Install pyarrow
